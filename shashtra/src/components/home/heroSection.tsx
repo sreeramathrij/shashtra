@@ -10,9 +10,6 @@ const festName = "SHASHTRA";
 
 const HeroSection = () => {
 
-  const t1 = gsap.timeline();
-
-
   useEffect(() => {
     const t1 = gsap.timeline();
 
