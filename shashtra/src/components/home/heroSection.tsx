@@ -60,7 +60,7 @@ const HeroSection = () => {
         </h1>
       </div>
       <div className="flex overflow-hidden justify-between px-16">
-        <span className="subtitle font-semibold">"THE" TECH FEST IN ERNALLAM</span>
+        <span className="subtitle font-semibold">&quot;THE&quot; TECH FEST IN ERNALLAM</span>
         <Link href="#" className="handle font-semibold">@SHASHTRA2025</Link>
       </div>
       <div className="flex flex-1/2 gap-4 px-8 overflow-hidden">
