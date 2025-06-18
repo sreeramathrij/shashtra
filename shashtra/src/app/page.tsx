@@ -1,7 +1,6 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Instagram, Linkedin, UserLock } from "lucide-react";
+import { UserLock } from "lucide-react";
 import Link from "next/link";
 
 import ScrollTrigger from 'gsap/src/ScrollTrigger'
@@ -10,17 +9,18 @@ import gsap, { CSSPlugin, Expo } from 'gsap'
 import HeroSection from "@/components/home/heroSection";
 import About from "@/components/home/about";
 import Lenis from "lenis";
+import Image from "next/image";
+import Legacy from "@/components/home/legacy";
 
 gsap.registerPlugin(CSSPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-const legacyParagraph = "For over two decades, Shashtra has stood as more than just a techno-managerial fest—it has been a launchpad for innovation, a bridge between academia and industry, and a vibrant hub for collaboration. Shashtra has consistently inspired students, empowered ideas, and created meaningful impact within and beyond the campus. Building on this rich legacy, Shashtra 2024 aims to deliver an experience that is even more dynamic, transformative, and future-ready."
 
 export default function Home() {
 
   useEffect(() => {
     const lenis = new Lenis();
-    const raf = (time: any) => {
+    const raf = (time: number) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
@@ -120,27 +120,8 @@ export default function Home() {
             <div className="h-screen flex items-center justify-center">
               <About />
             </div>
-            <div className="h-screen flex items-center justify-center gap-8">
-              <div className="flex-1">
-                <div>
-                  <span>OUR LEGACY</span>
-                  <p>{legacyParagraph}</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                {[
-                  "LOGO 1", "LOGO 2", "LOGO 3",
-                  "LOGO 4", "LOGO 5", "LOGO 6",
-                  "LOGO 7"
-                ].map((icon, idx) => (
-                  <div
-                    key={idx}
-                    className=""
-                  >
-                    {icon}
-                  </div>
-                ))}
-              </div>
+            <div className="h-screen  gap-8">
+              <Legacy />
             </div>
             <div className="h-screen items-center justify-center gap-8 p-4 flex flex-col">
               <div className="flex items-center justify-center">
@@ -173,7 +154,7 @@ export default function Home() {
             </div>
             <div className="h-svh items-center justify-center gap-8 p-4 flex flex-col">
               <div className="rounded-full bg-primary-foreground size-24">
-                <img src="/globe.svg" alt="" className="fill-current" />
+                <Image src="/globe.svg" alt="" className="fill-current" />
               </div>
               <div className="flex items-center justify-center">
                 <div className="flex flex-col items-center">

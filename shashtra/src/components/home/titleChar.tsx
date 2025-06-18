@@ -36,7 +36,7 @@ const TitleChar = ({ index, char }: TitleCharProps) => {
               ease: "expo.inOut",
               delay: 5
             })
-  }, []);
+  }, [index]);
 
   return (
     <span className="char overflow-hidden relative">

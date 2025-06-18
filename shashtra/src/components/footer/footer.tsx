@@ -1,4 +1,5 @@
 import { Linkedin, School } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className="flex gap-32 size-full justify-center items-center">
         <Link href="#" className="flex gap-2 items-center">
           <div className="rounded-full size-16">
-            <img src="/globe.svg" alt="" className="fill-current" />
+            <Image src="/globe.svg" alt="" className="fill-current" />
           </div>
           <div className="flex flex-col">
             <span className="text-2xl text-muted-foreground font-semibold size-fit">SHASHTRA</span>

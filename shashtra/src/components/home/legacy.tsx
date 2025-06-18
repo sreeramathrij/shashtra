@@ -1,13 +1,11 @@
 "use-client"
 
 
-import React, { useEffect } from 'react'
-import gsap from 'gsap'
-import SplitText from 'gsap/SplitText'
+import React from 'react'
 
-const legacyParagraph = "For over two decades, Shashtra has stood as more than just a techno-managerial fest—it has been a launchpad for innovation, a bridge between academia and industry, and a vibrant hub for collaboration. Shashtra has consistently inspired students, empowered ideas, and created meaningful impact within and beyond the campus. Building on this rich legacy, Shashtra 2024 aims to deliver an experience that is even more dynamic, transformative, and future-ready."
+// const legacyParagraph = "For over two decades, Shashtra has stood as more than just a techno-managerial fest—it has been a launchpad for innovation, a bridge between academia and industry, and a vibrant hub for collaboration. Shashtra has consistently inspired students, empowered ideas, and created meaningful impact within and beyond the campus. Building on this rich legacy, Shashtra 2024 aims to deliver an experience that is even more dynamic, transformative, and future-ready."
 
-const legacy = () => {
+const Legacy = () => {
   return (
     <div className='relative flex flex-1 items-center justify-center overflow-hidden'>
       <div className="gallery-container relative size-100 flex justify-center items-center transform-3d perspective-distant will-change-transform">
@@ -30,4 +28,4 @@ const legacy = () => {
   )
 }
 
-export default legacy
+export default Legacy

@@ -50,7 +50,7 @@ const HeroSection = () => {
     })
 
     heroAnimation();
-  }, [])
+  }, [heroAnimation])
 
   return (
     <div className="flex flex-col size-full">
