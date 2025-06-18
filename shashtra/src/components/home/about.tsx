@@ -1,8 +1,6 @@
 "use-client"
 
-import Link from 'next/link'
-import React, { useEffect } from 'react'
-import gsap from 'gsap'
+import React from 'react'
 
 import { Card, CardContent } from '../ui/card'
 

@@ -12,7 +12,22 @@ const HeroSection = () => {
 
   const t1 = gsap.timeline();
 
-  const heroAnimation = () => {
+
+  useEffect(() => {
+    const t1 = gsap.timeline();
+
+    // Set initial states
+    gsap.set(".subtitle", {
+      xPercent: -200,
+    });
+    gsap.set(".handle", {
+      xPercent: 200,
+    });
+    gsap.set(".threew", {
+      yPercent: 200,
+    });
+
+    // Play animation
     t1
       .to(".subtitle", {
         xPercent: 0,
@@ -35,22 +50,8 @@ const HeroSection = () => {
           each: 0.1,
         },
         delay: 0.3,
-      })
-  }
-
-  useEffect(() => {
-    gsap.set(".subtitle", {
-      xPercent: -200,
-    })
-    gsap.set(".handle", {
-      xPercent: 200,
-    })
-    gsap.set(".threew", {
-      yPercent: 200,
-    })
-
-    heroAnimation();
-  }, [heroAnimation])
+      });
+  }, []);
 
   return (
     <div className="flex flex-col size-full">

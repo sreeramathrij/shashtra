@@ -70,7 +70,7 @@ const Menu = () => {
         <div className='menu-logo'>
           <Link href="#" className="flex gap-2 items-center cursor-pointer">
             <div className="rounded-full size-12">
-              <Image src="/globe.svg" alt="" className="fill-current" />
+              <Image width={40} height={40} src="/globe.svg" alt="" className="fill-current" />
             </div>
             <div className="flex flex-col">
               <span className="text-xl text-muted-foreground font-semibold size-fit">SHASHTRA</span>
@@ -88,7 +88,7 @@ const Menu = () => {
           <div className='menu-logo'>
             <Link href="#" className="flex gap-2 items-center">
               <div className="rounded-full size-12">
-                <Image src="/globe.svg" alt="" className="fill-current" />
+                <Image width={40} height={40} src="/globe.svg" alt="" className="fill-current" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl text-muted-foreground font-semibold size-fit">SHASHTRA</span>

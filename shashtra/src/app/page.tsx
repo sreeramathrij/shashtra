@@ -154,7 +154,7 @@ export default function Home() {
             </div>
             <div className="h-svh items-center justify-center gap-8 p-4 flex flex-col">
               <div className="rounded-full bg-primary-foreground size-24">
-                <Image src="/globe.svg" alt="" className="fill-current" />
+                <Image width={40} height={40} src="/globe.svg" alt="" className="fill-current" />
               </div>
               <div className="flex items-center justify-center">
                 <div className="flex flex-col items-center">
