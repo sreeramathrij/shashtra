@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className="h-32 w-full bg-foreground px-64 py-4">
-      <div className="flex gap-32 size-full justify-center items-center">
+      <div className="flex gap-32 size-full justify-between items-center">
         <Link href="#" className="flex gap-2 items-center">
           <div className="rounded-full size-16">
             <Image width={40} height={40} src="/globe.svg" alt="" className="fill-current" />

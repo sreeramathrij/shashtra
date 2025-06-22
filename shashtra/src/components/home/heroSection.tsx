@@ -44,7 +44,7 @@ const HeroSection = () => {
         ease: "expo.out",
         stagger: {
           from: "center",
-          each: 0.1,
+          each: 0.3,
         },
         delay: 0.3,
       });

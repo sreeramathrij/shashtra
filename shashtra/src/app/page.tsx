@@ -120,7 +120,7 @@ export default function Home() {
             <div className="h-screen flex items-center justify-center">
               <About />
             </div>
-            <div className="h-screen  gap-8">
+            <div className="h-screen flex flex-col gap-8">
               <Legacy />
             </div>
             <div className="h-screen items-center justify-center gap-8 p-4 flex flex-col">
