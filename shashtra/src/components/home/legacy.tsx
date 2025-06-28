@@ -1,4 +1,4 @@
-"use-client"
+"use client"
 
 import { useIsMobile, useViewportWidth } from '@/hooks/useIsMobile';
 import React, { useEffect, useMemo, useRef, useState } from 'react'
@@ -86,6 +86,13 @@ const Legacy = () => {
     
     const tl = gsap.timeline();
 
+    tl.to(titleContainer.current, {
+      y: 100,
+      opacity: 0,
+      duration: 0.4,
+      ease: "power3.inOut",
+    })
+
     cardsRef.current.forEach((card, idx) => {
         setTransformState(prev => {
           const updated = [...prev]; 
@@ -113,8 +120,7 @@ const Legacy = () => {
     });
 
     tl.to(gallery.current, {
-      height: "400%",
-      width: "400%",
+      scale: 4,
       y: 1200,
       rotation: (rotationRadians * 180) / Math.PI + 360,
       duration: 2,
@@ -144,8 +150,6 @@ const Legacy = () => {
   const resetGallery = (viewportWidth: number) => {
     if(isTransitioning) return;
 
-    console.log(viewportWidth);
-
     setIsTransitioning(true);
     let galleryScale = 1;
 
@@ -155,9 +159,11 @@ const Legacy = () => {
       galleryScale = 1;
     }
 
-    gsap.to(gallery.current, {
+    const tl = gsap.timeline();
+
+    tl.to(gallery.current, {
       scale: galleryScale,
-      y:0,
+      y: 0,
       x: 0,
       rotation: 0,
       duration: 2.5,
@@ -174,6 +180,12 @@ const Legacy = () => {
           currentZ: 0,
         })
       },
+    })
+    tl.to(titleContainer.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.4,
+      ease: "power3.inOut",
     })
   }
 
@@ -381,7 +393,15 @@ const Legacy = () => {
   return (
     <div className='relative flex flex-1 items-center justify-center overflow-hidden'>
       <div ref={galleryContainer} className="gallery-container relative size-[80vh] flex justify-center items-center transform-3d perspective-distant will-change-transform">
-        <div ref={gallery} className="gallery relative size-full flex justify-center items-center origin-center will-change-transform">
+        <div
+          ref={gallery}
+          className="gallery relative flex justify-center items-center origin-center will-change-transform"
+          style={{
+            width: "80vh",
+            height: "80vh",
+            transformOrigin: "center center",
+          }}
+        >
           {cardsStringList.map((icon, idx) => {
             if (cards.length > cardsStringList.length || transformStateRef.current.length > cardsStringList.length) {
               console.warn("Cards or transformState array grew too big");
@@ -410,7 +430,10 @@ const Legacy = () => {
               />
             )
           })}
-        </div>
+        </div>  
+      </div>
+      <div ref={titleContainer} className='absolute top-40% left-40% text-4xl font-bold'>
+        {"OUR LEGACY" }
       </div>
     </div>
   )

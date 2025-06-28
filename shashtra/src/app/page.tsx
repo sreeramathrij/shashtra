@@ -11,6 +11,9 @@ import About from "@/components/home/about";
 import Lenis from "lenis";
 import Image from "next/image";
 import Legacy from "@/components/home/legacy";
+import Gallery from "@/components/home/gallery";
+import Sponsors from "@/components/home/sponsors";
+import CallForAction from "@/components/home/callForAction";
 
 gsap.registerPlugin(CSSPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -123,49 +126,14 @@ export default function Home() {
             <div className="h-screen flex flex-col gap-8">
               <Legacy />
             </div>
-            <div className="h-screen items-center justify-center gap-8 p-4 flex flex-col">
-              <div className="flex items-center justify-center">
-                <span className="text-5xl font-semibold">GALLERY</span>
-              </div>
-              <div className="grid md:grid-cols-3 md:grid-rows-3 gap-4">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
-                  <span key={`gallery-img-${index}`} className="size-64 bg-muted-foreground border-2 border-accent rounded-md"></span>
-                ))}
-              </div>
+            <div className="h-screen">
+              <Gallery />
             </div>
-            <div className="h-screen items-center justify-center gap-12 p-4 flex flex-col overflow-hidden">
-              <div className="flex items-center justify-center">
-                <span className="text-5xl font-semibold">OUR SPONSORS</span>
-              </div>
-              <div className="grid md:grid-cols-2 md:grid-rows-2 gap-4">
-                {[0, 1, 2, 3].map((_, index) => (
-                  <div key={`gallery-img-${index}`} className="w-80 h-56 bg-muted-foreground border-2 border-accent rounded-md flex items-center justify-center">
-                    <span className="text-background font-semibold text-3xl">{`SPONSOR ${index + 1}`}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex overflow-hidden gap-4">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
-                  <div key={`gallery-img-${index}`} className="w-64 h-48 bg-muted-foreground border-2 border-accent rounded-md flex items-center justify-center">
-                    <span className="text-background font-semibold text-3xl">{`SPONSOR ${index + 5}`}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="h-screen p-4 flex items-center justify-center">
+              <Sponsors />
             </div>
             <div className="h-svh items-center justify-center gap-8 p-4 flex flex-col">
-              <div className="rounded-full bg-primary-foreground size-24">
-                <Image width={40} height={40} src="/globe.svg" alt="" className="fill-current" />
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl font-semibold animate-pulse">IGNITE THE FUTURE</span>
-                  <span className="text-xl">WHERE IMAGINATION FUELS TECHNOLOGY AND START ARE JUST THE BEGINNING</span>
-                  <Link href="#" className="rounded-md h-16 w-48 border-accent-foreground border-b-4 border-r-4 bg-lime-200 hover:bg-accent active:border-none transition-all duration-300 flex gap-2 justify-center items-center m-8">
-                    <UserLock size={32} />
-                    <span className="text-2xl">SIGN UP</span>
-                  </Link>
-                </div>
-              </div>
+              <CallForAction />
             </div>
           </div>
         </main>

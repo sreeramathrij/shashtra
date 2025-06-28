@@ -100,7 +100,7 @@ const LegacyCard = ({ index, title, isPrevieActive, isTransitioning, xPos, yPos,
     <div
       ref={cardRef}
       title={title}
-      className={`card cursor-pointer absolute w-[10%] h-[15%] border-4 border-foreground bg-linear-to-tr from-accent to-accent-foreground rounded-md origin-center will-change-transform transform-3d backface-visible`}
+      className={`card cursor-pointer absolute w-[12vh] h-[12vh] border-4 border-foreground bg-linear-to-tr from-accent to-accent-foreground rounded-md origin-center will-change-transform transform-3d backface-visible`}
       onClick={handleCardClick}
     >
       {isSelected && 
