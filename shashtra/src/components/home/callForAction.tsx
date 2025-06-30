@@ -9,9 +9,12 @@ const CallForAction = () => {
   const signupButton = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.from(".signup", {
+    gsap.fromTo(".signup", {
       y: 100,
       opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
       duration: 0.4,
       stagger: 0.1,
       ease: "power2.out",
