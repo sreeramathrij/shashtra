@@ -1,7 +1,7 @@
 "use client"
 
 import { useIsMobile, useViewportWidth } from '@/hooks/useIsMobile';
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import gsap from "gsap";
 import LegacyCard from './legacyCard';
 
@@ -39,7 +39,6 @@ const Legacy = () => {
 
   const [selectedCard, setSelectedCard] = useState<HTMLDivElement | null>(null);
 
-  const [currentTitle, setCurrentTitle] = useState("");
   const [isPreviewActive, setIsPreviewActive] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -64,13 +63,14 @@ const Legacy = () => {
   })
   const parallaxRef = useRef(parallaxState);
 
-  const setParallaxState = (updater: (prev: typeof parallaxState) => typeof parallaxState) => {
-    _setParallaxState((prev) => {
-      const updated = updater(prev);
-      parallaxRef.current = updated;
-      return updated;
-    });
-  };
+  const setParallaxState = useCallback((updater: (prev: typeof parallaxState) => typeof parallaxState) => {
+      _setParallaxState((prev) => {
+        const updated = updater(prev);
+        parallaxRef.current = updated;
+        return updated;
+      });
+    },[]
+  );
 
   const togglePreview = (index: number) => {
     setIsPreviewActive(true);
@@ -147,7 +147,7 @@ const Legacy = () => {
     }, 0);
   }
 
-  const resetGallery = (viewportWidth: number) => {
+  const resetGallery = useCallback((viewportWidth: number) => {
     if(isTransitioning) return;
 
     setIsTransitioning(true);
@@ -187,52 +187,8 @@ const Legacy = () => {
       duration: 0.4,
       ease: "power3.inOut",
     })
-  }
+  }, [isTransitioning, viewportWidth]);
 
-  const handleResize = () => {
-    const viewportWidth = useViewportWidth();
-
-    let galleryScale = 1;
-
-    if(viewportWidth < 760){
-      galleryScale = 0.6;
-    } else if(viewportWidth < 1200) {
-      galleryScale = 0.8;
-    }
-
-    gsap.set(gallery.current, {
-      scale: galleryScale,
-    })
-
-    if(!isPreviewActive) {
-      _setParallaxState({
-        targetX: 0,
-        targetY: 0,
-        targetZ: 0,
-        currentX: 0,
-        currentY: 0,
-        currentZ: 0,
-      })
-
-      setTransformState(prev => {
-        const resettedState = prev;
-        resettedState.forEach((state) => {
-          state.targetRotation = 0;
-          state.currentRotation = 0;
-          state.targetScale = 1;
-          state.currentScale = 1;
-          state.targetX = 0;
-          state.currentX = 0;
-          state.targetY = 0;
-          state.currentY = 0;
-        })
-
-        return resettedState;
-      })
-    }
-  }
-
-  
 
   useEffect(() => {
     let frameId: number;
@@ -281,13 +237,13 @@ const Legacy = () => {
     animate();
 
     return () => cancelAnimationFrame(frameId); // cleanup
-  }, []);
-
-  let lastCall = 0;
+  }, [config.lerpFactor, config.radius, isPreviewActive, isTransitioning, setParallaxState]);
+  
   const delay = 1000 / 60; // max 60fps
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      let lastCall = 0;
       const now = performance.now();
       if (now - lastCall < delay) return;
       lastCall = now;
@@ -363,7 +319,7 @@ const Legacy = () => {
 
     document.addEventListener("mousemove", handleMouseMove);
     return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, [isPreviewActive, isTransitioning, config.isMobile]);
+  }, [isPreviewActive, isTransitioning, config.isMobile, config.cardMoveAmount, config.effectFalloff, config.sensistivity, delay, setParallaxState]);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -380,11 +336,11 @@ const Legacy = () => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [isPreviewActive, resetGallery]);
+  }, [isPreviewActive, resetGallery, selectedCard, viewportWidth]);
 
   useEffect(() => {
     cardsRef.current = cards;
-  }, [cards]);
+  }, [cards, viewportWidth, selectedCard]);
 
   useEffect(() => {
     transformStateRef.current = transformState;

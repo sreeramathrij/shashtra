@@ -16,16 +16,6 @@ interface TransformObj {
   angle: number,
 }
 
-interface CardsConfig {
-  imageCount: number,
-  radius: number,
-  sensistivity: number,
-  effectFalloff: number,
-  cardMoveAmount: number,
-  lerpFactor: number,
-  isMobile: boolean,
-}
-
 interface LegacyCardProps {
   index: number,
   title: string,
@@ -83,7 +73,7 @@ const LegacyCard = ({ index, title, isPrevieActive, isTransitioning, xPos, yPos,
       return updated;
     });
 
-  }, []);
+  }, [angle, index, setTransformState, xPos, yPos]);
 
   useEffect(() => {
     setCards(prev => {
@@ -94,7 +84,7 @@ const LegacyCard = ({ index, title, isPrevieActive, isTransitioning, xPos, yPos,
       }
       return prev;
     });
-  }, []);
+  }, [index, setCards]);
 
   return (
     <div

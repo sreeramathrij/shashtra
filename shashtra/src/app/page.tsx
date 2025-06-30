@@ -1,15 +1,11 @@
 "use client"
 
-import { UserLock } from "lucide-react";
-import Link from "next/link";
-
 import ScrollTrigger from 'gsap/src/ScrollTrigger'
 import { useState, useEffect, } from "react";
 import gsap, { CSSPlugin, Expo } from 'gsap'
 import HeroSection from "@/components/home/heroSection";
 import About from "@/components/home/about";
 import Lenis from "lenis";
-import Image from "next/image";
 import Legacy from "@/components/home/legacy";
 import Gallery from "@/components/home/gallery";
 import Sponsors from "@/components/home/sponsors";

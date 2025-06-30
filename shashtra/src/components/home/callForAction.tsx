@@ -1,12 +1,10 @@
 import { UserLock } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import gsap from 'gsap'
 
 const CallForAction = () => {
-
-  const signupButton = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.fromTo(".signup", {

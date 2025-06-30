@@ -1,7 +1,7 @@
 "use client"
 
 import gsap from 'gsap'
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 const Gallery = () => {
 
